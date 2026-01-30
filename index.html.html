@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Kumar Pandey - Business Development Analyst for Tesla Energy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --tesla-red: #E82127;
+            --tesla-black: #181818;
+            --tesla-gray: #393c41;
+            --energy-blue: #00D4FF;
+            --solar-orange: #FF8800;
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --accent-glow: rgba(0, 212, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated energy grid background */
+        .energy-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            z-index: -1;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Energy particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--energy-blue);
+            border-radius: 50%;
+            animation: float-particle 20s linear infinite;
+            box-shadow: 0 0 10px var(--energy-blue);
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section - Tesla Style */
+        .hero {
+            background: linear-gradient(135deg, var(--tesla-black) 0%, var(--tesla-gray) 100%);
+            padding: 100px 80px;
+            border-radius: 0;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid var(--tesla-red);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%2300D4FF" stroke-width="0.5" opacity="0.1"/><circle cx="50" cy="50" r="30" fill="none" stroke="%2300D4FF" stroke-width="0.5" opacity="0.1"/><circle cx="50" cy="50" r="20" fill="none" stroke="%2300D4FF" stroke-width="0.5" opacity="0.1"/></svg>') center/contain no-repeat;
+            opacity: 0.3;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tesla-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--tesla-red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(232, 33, 39, 0.4);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(232, 33, 39, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(232, 33, 39, 0.6); }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--energy-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--energy-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-mission {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 1000px;
+            margin-bottom: 40px;
+        }
+
+        .mission-highlight {
+            color: var(--solar-orange);
+            font-weight: 700;
+        }
+
+        .contact-bar {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--energy-blue);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .contact-link:hover {
+            background: var(--energy-blue);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        /* Data-Driven Proof Section */
+        .proof-metrics {
+            background: linear-gradient(135deg, var(--tesla-red) 0%, #c41e24 100%);
+            padding: 60px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-metrics::before {
+            content: '⚡';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 15rem;
+            opacity: 0.08;
+        }
+
+        .proof-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .proof-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .metric-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--energy-blue);
+        }
+
+        .section-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--energy-blue);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Capability Cards */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .capability-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-left: 4px solid var(--energy-blue);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .capability-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateX(10px);
+            border-left-color: var(--tesla-red);
+            box-shadow: -10px 0 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .capability-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .capability-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .capability-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--energy-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .capability-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--energy-blue), var(--solar-orange));
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            background: var(--bg-card);
+            padding: 40px;
+            border-left: 4px solid var(--energy-blue);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -88px;
+            top: 40px;
+            width: 24px;
+            height: 24px;
+            background: var(--energy-blue);
+            border: 6px solid var(--bg-dark);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--energy-blue);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px var(--energy-blue); }
+            50% { transform: scale(1.2); box-shadow: 0 0 40px var(--energy-blue); }
+        }
+
+        .job-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--energy-blue);
+            text-transform: uppercase;
+        }
+
+        .job-company {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--solar-orange);
+            margin-bottom: 5px;
+        }
+
+        .job-meta {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .job-highlight {
+            background: rgba(232, 33, 39, 0.1);
+            border-left: 3px solid var(--tesla-red);
+            padding: 20px;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .achievement {
+            margin-bottom: 18px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .achievement::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--energy-blue);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .achievement strong {
+            color: var(--text-primary);
+        }
+
+        /* Tech Stack Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, var(--tesla-black), var(--tesla-gray));
+            color: var(--energy-blue);
+            padding: 8px 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--energy-blue);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--energy-blue);
+            color: var(--bg-dark);
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        /* Why Tesla Section */
+        .why-tesla {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 80px 60px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-tesla::before {
+            content: '🔋';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .why-tesla h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .why-tesla p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--tesla-black);
+            padding: 100px 80px;
+            text-align: center;
+            border: 4px solid var(--tesla-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(232, 33, 39, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background: var(--tesla-red);
+            color: white;
+            border: 3px solid var(--tesla-red);
+        }
+
+        .cta-button.primary:hover {
+            background: transparent;
+            box-shadow: 0 0 40px rgba(232, 33, 39, 0.6);
+            transform: scale(1.05);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--energy-blue);
+            border: 3px solid var(--energy-blue);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--energy-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 50px;
+            }
+
+            .section-number {
+                font-size: 2.5rem;
+            }
+
+            .why-tesla, .cta-section {
+                padding: 50px 30px;
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="energy-grid"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="tesla-badge">
+                    ⚡ BUSINESS DEVELOPMENT ANALYST | TESLA ENERGY
+                </div>
+                <h1>HARSH KUMAR PANDEY</h1>
+                <div class="hero-title">Data-Driven Energy Market Analyst | Sustainability Champion</div>
+                <p class="hero-mission">
+                    <span class="mission-highlight">Intensely curious analyst</span> with proven track record of 
+                    analyzing mountains of data to solve complex business problems. Expert in market intelligence, 
+                    competitive analysis, and building robust data structures that drive strategic decisions. 
+                    Passionate about <span class="mission-highlight">accelerating the transition to sustainable energy</span> 
+                    through data-driven insights and relentless innovation.
+                </p>
+                <div class="contact-bar">
+                    <a href="tel:+13853210921" class="contact-link">
+                        <span>📞</span> +1.385.321.0921
+                    </a>
+                    <a href="mailto:pandeyharsh@outlook.in" class="contact-link">
+                        <span>✉️</span> pandeyharsh@outlook.in
+                    </a>
+                    <a href="https://www.linkedin.com/in/haarshpandey" target="_blank" class="contact-link">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="https://public.tableau.com/app/profile/harsh.pandey3364/vizzes" target="_blank" class="contact-link">
+                        <span>📊</span> Tableau Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proof Metrics -->
+        <div class="proof-metrics reveal">
+            <div class="proof-header">⚡ DATA-DRIVEN IMPACT</div>
+            <h2 class="proof-title">Proven Track Record of Analysis Excellence</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">2+</span>
+                    <span class="metric-label">Years Analyzing<br>Operational Data</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">25%</span>
+                    <span class="metric-label">Operational Improvement<br>Through Analytics</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">100+</span>
+                    <span class="metric-label">Automated Dashboards<br>& Data Models</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">12+</span>
+                    <span class="metric-label">Cross-Functional<br>Analytics Projects</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Capabilities -->
+        <div class="section reveal">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Core Analytical Capabilities</h2>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <span class="capability-icon">📊</span>
+                    <h3 class="capability-title">Market Intelligence & Competitive Analysis</h3>
+                    <p class="capability-description">
+                        Expert at tracking industry trends, monitoring competitor announcements, and synthesizing 
+                        market data into actionable insights. Built automated competitor tracking systems and market 
+                        dashboards that inform strategic decisions across leadership teams.
+                    </p>
+                </div>
+                <div class="capability-card">
+                    <span class="capability-icon">🔬</span>
+                    <h3 class="capability-title">Advanced Data Analysis & Modeling</h3>
+                    <p class="capability-description">
+                        Strong track record of owning entire analysis workflow—from data collection and cleaning to 
+                        analysis and recommendations. Proficient in Python, SQL, and Excel for complex dataset 
+                        manipulation. Built predictive models and automated reporting frameworks.
+                    </p>
+                </div>
+                <div class="capability-card">
+                    <span class="capability-icon">🎯</span>
+                    <h3 class="capability-title">Business Intelligence & Dashboard Development</h3>
+                    <p class="capability-description">
+                        Created robust data structures and interactive dashboards using Tableau and Power BI. 
+                        Transitioned manual Excel models into automated Python/web dashboards, scaling analysis 
+                        capacity by 40% and improving decision-making speed.
+                    </p>
+                </div>
+                <div class="capability-card">
+                    <span class="capability-icon">🤖</span>
+                    <h3 class="capability-title">AI/LLM Integration & Workflow Automation</h3>
+                    <p class="capability-description">
+                        Experience leveraging AI and LLMs to optimize intelligence gathering and data workflows. 
+                        Built automated data scraping systems and implemented GenAI solutions for market research 
+                        and competitive analysis tasks.
+                    </p>
+                </div>
+                <div class="capability-card">
+                    <span class="capability-icon">⚡</span>
+                    <h3 class="capability-title">Energy Market Knowledge & Curiosity</h3>
+                    <p class="capability-description">
+                        Strong curiosity about renewable and storage industries. Rapidly acquired utility operations 
+                        knowledge while building analytics infrastructure. Passionate about understanding how energy 
+                        markets work and explaining why trends emerge.
+                    </p>
+                </div>
+                <div class="capability-card">
+                    <span class="capability-icon">📝</span>
+                    <h3 class="capability-title">Strategic Communication & Storytelling</h3>
+                    <p class="capability-description">
+                        Exceptional written and verbal communication skills. Expert at distilling complex datasets 
+                        into key takeaways for executive audiences. Created compelling presentations that drove 
+                        strategic shifts across multiple business units.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Tesla -->
+        <div class="why-tesla reveal">
+            <h2>Why Tesla Energy?</h2>
+            <p>
+                Tesla's mission to accelerate the world's transition to sustainable energy isn't just inspiring—it's 
+                <strong>urgent</strong>. The energy storage market is at a critical inflection point, and the data 
+                tells a compelling story of exponential growth ahead.
+                <br><br>
+                What excites me about Global Business Development: I get to be at the intersection of <strong>data 
+                analysis</strong>, <strong>market strategy</strong>, and <strong>sustainable energy</strong>. Analyzing 
+                competitor product announcements to inform product strategy, researching energy storage project 
+                announcements to guide new market entry, creating market size and share dashboards—this is exactly the 
+                type of high-impact, varied analytical work I thrive on.
+                <br><br>
+                I bring an intensely curious mindset, rock-solid work ethic, and proven ability to analyze mountains 
+                of data to solve tough business problems. I've built the analytical infrastructure, automated the 
+                workflows, and delivered the insights. Now I want to apply those skills to help Tesla dominate the 
+                energy storage market and accelerate sustainable energy adoption globally.
+                <br><br>
+                <strong>Let's analyze our way to a sustainable future.</strong>
+            </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="section reveal">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Analytical Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="job-title">Business Analyst - Market Intelligence & Operations</h3>
+                    <div class="job-company">Tucson Electric Power (TEP)</div>
+                    <div class="job-meta">📍 Tucson, AZ | 📅 Aug 2024 – Dec 2024</div>
+                    <div class="job-highlight">
+                        Led cross-functional analytics for utility operations, building market intelligence frameworks 
+                        and competitive analysis systems that informed strategic planning and resource allocation.
+                    </div>
+                    <div class="achievement">
+                        <strong>Built market intelligence dashboard from scratch</strong>—tracked utility industry trends, 
+                        competitor initiatives, and operational benchmarks. Created automated data collection systems that 
+                        reduced manual research time by 30% while improving data freshness.
+                    </div>
+                    <div class="achievement">
+                        <strong>Owned entire analysis workflow</strong> for operational efficiency projects—collected data 
+                        from disparate sources, cleaned complex datasets, performed statistical analysis, and delivered 
+                        executive recommendations that drove 25% operational improvement.
+                    </div>
+                    <div class="achievement">
+                        <strong>Developed robust data structures and interactive dashboards</strong> using Tableau and 
+                        Python to track KPIs across workforce utilization, cost trends, and performance metrics. Dashboards 
+                        now used by leadership for strategic decisions.
+                    </div>
+                    <div class="achievement">
+                        <strong>Transitioned Excel models into Python/web dashboards</strong>—automated data scraping, 
+                        validation, and reporting processes. Scaled analysis capacity and enabled real-time intelligence 
+                        gathering across operations teams.
+                    </div>
+                    <div class="achievement">
+                        <strong>Synthesized complex datasets into key takeaways</strong> for non-technical stakeholders. 
+                        Created compelling presentations that explained trends, identified risks, and recommended strategic 
+                        actions to utility leadership.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Excel (Advanced)</span>
+                        <span class="tech-tag">Market Research</span>
+                        <span class="tech-tag">Data Automation</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="job-title">Business Analyst - Competitive Intelligence & Data Modeling</h3>
+                    <div class="job-company">Harman International</div>
+                    <div class="job-meta">📍 India | 📅 Jun 2022 – Mar 2024</div>
+                    <div class="job-highlight">
+                        Analyzed competitive landscape, tracked product development trends, and built data models supporting 
+                        strategic decisions across manufacturing and consumer hardware programs.
+                    </div>
+                    <div class="achievement">
+                        <strong>Monitored competitor product announcements and market movements</strong>—built automated 
+                        tracking systems that flagged competitive threats and opportunities. Created competitive analysis 
+                        reports informing product strategy across 5 product lines.
+                    </div>
+                    <div class="achievement">
+                        <strong>Built comprehensive market size and share models</strong> using SQL databases and Excel. 
+                        Analyzed industry data to identify growth opportunities and inform strategic planning for new 
+                        market entry.
+                    </div>
+                    <div class="achievement">
+                        <strong>Owned data collection, cleaning, and analysis workflow</strong> for complex business 
+                        problems—combined datasets from multiple sources, cleaned inconsistent data, performed root cause 
+                        analysis, and delivered actionable recommendations to leadership.
+                    </div>
+                    <div class="achievement">
+                        <strong>Created automated reporting frameworks</strong> that transitioned manual analysis into 
+                        scalable, repeatable processes. Reduced reporting time by 40% while improving data accuracy and 
+                        consistency.
+                    </div>
+                    <div class="achievement">
+                        <strong>Developed curiosity-driven analysis approach</strong>—constantly asked "why" to understand 
+                        root causes of trends. Uncovered insights that led to strategic pivots in product development and 
+                        market positioning.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">MS SQL Server</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Excel (Advanced)</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Competitive Analysis</span>
+                        <span class="tech-tag">Market Modeling</span>
+                        <span class="tech-tag">Azure DevOps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section reveal">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Technical Arsenal</h2>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-tag">Python (Advanced)</span>
+                <span class="tech-tag">SQL (MS SQL, MySQL)</span>
+                <span class="tech-tag">Excel (Advanced VBA, Modeling)</span>
+                <span class="tech-tag">Tableau</span>
+                <span class="tech-tag">Power BI</span>
+                <span class="tech-tag">Data Scraping & Automation</span>
+                <span class="tech-tag">Statistical Analysis</span>
+                <span class="tech-tag">Machine Learning</span>
+                <span class="tech-tag">AI/LLM Integration</span>
+                <span class="tech-tag">Market Research</span>
+                <span class="tech-tag">Competitive Intelligence</span>
+                <span class="tech-tag">Financial Modeling</span>
+                <span class="tech-tag">Data Visualization</span>
+                <span class="tech-tag">Azure DevOps</span>
+                <span class="tech-tag">Git/GitHub</span>
+                <span class="tech-tag">API Integration</span>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section reveal">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Education & Certifications</h2>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <span class="capability-icon">🎓</span>
+                    <h3 class="capability-title">Master of Science in Business Analytics</h3>
+                    <p class="capability-description">
+                        <strong>University of Arizona – Eller College of Management</strong><br>
+                        July 2024 – Dec 2025 | Tucson, AZ<br>
+                        <em>Major in Project Management and Data Analytics<br>
+                        Relevant: Statistical Analysis, Machine Learning, Energy Economics, Market Analytics</em>
+                    </p>
+                </div>
+                <div class="capability-card">
+                    <span class="capability-icon">🎓</span>
+                    <h3 class="capability-title">Bachelor of Business Administration</h3>
+                    <p class="capability-description">
+                        <strong>Birla Institute of Technology</strong><br>
+                        July 2020 – July 2023 | Ranchi, India<br>
+                        <em>Major in Finance and Information Technology<br>
+                        Focus: Financial Modeling, Data Analysis, Business Intelligence</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section reveal">
+            <div class="cta-content">
+                <h2>Ready to Accelerate Sustainable Energy</h2>
+                <p>Let's analyze markets, track competitors, and drive Tesla Energy's global expansion</p>
+                <div class="cta-buttons">
+                    <a href="mailto:pandeyharsh@outlook.in?subject=Tesla%20Energy%20Business%20Development%20Analyst%20Role" class="cta-button primary">
+                        📧 LET'S TALK
+                    </a>
+                    <a href="tel:+13853210921" class="cta-button secondary">
+                        📞 CALL ME
+                    </a>
+                </div>
+                <p style="margin-top: 40px; font-size: 1rem; color: var(--text-secondary);">
+                    Intensely curious • Rock-solid work ethic • Passionate about sustainable energy
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create energy particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Console message
+        console.log('%c⚡ TESLA ENERGY ⚡', 'color: #E82127; font-size: 24px; font-weight: bold;');
+        console.log('%cThanks for checking out my resume!', 'color: #00D4FF; font-size: 16px;');
+        console.log('%c📊 Data-driven analyst ready to help accelerate sustainable energy', 'color: #fff; font-size: 14px;');
+        console.log('%c📧 pandeyharsh@outlook.in', 'color: #FF8800; font-size: 14px;');
+        console.log('%c🚀 Let\'s analyze our way to a sustainable future!', 'color: #00D4FF; font-size: 14px;');
+    </script>
+</body>
+</html>
